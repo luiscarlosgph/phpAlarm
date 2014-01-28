@@ -23,83 +23,51 @@
 // Functions
 
 /**
- * Adds one hour to the hour input box. 24h format.
- * @param[in] hourId Id of the hour input box to be modified.
+ * Adds one to the value of the input box passed as a parameter.
+ * @param[in] numInputBox Id of the input box to be modified. 
+ * @param[in] maxVal   Maximum value of the input box number.
  * @returns Nothing.
  */
-function hourPlusOne(hourId) {
-	if (isNaN(document.getElementById(hourId).value))
-		document.getElementById(hourId).value = '00';
-	else if (document.getElementById(hourId).value == 23)
-		document.getElementById(hourId).value = '00'; 
+function addOne(numInputBox, maxVal) {
+	if (isNaN(document.getElementById(numInputBox).value))
+		document.getElementById(numInputBox).value = '0';
+	else if (document.getElementById(numInputBox).value == maxVal)
+		document.getElementById(numInputBox).value = 0; 
 	else 
-		document.getElementById(hourId).value++;
-	if (document.getElementById(hourId).value.length == 1)
-		document.getElementById(hourId).value = '0' + document.getElementById(hourId).value;
+		document.getElementById(numInputBox).value++;
+	if (document.getElementById(numInputBox).value.length == 1)
+		document.getElementById(numInputBox).value = '0' + document.getElementById(numInputBox).value;
 }
 
 /**
- * Substracts one hour to the hour input box. 24h format.
- * @param[in] hourId Id of the hour input box to be modified.
+ * Substracts one to the value of the input box passed as a parameter.
+ * @param[in] numInputBox Id of the input box to be modified. 
+ * @param[in] maxVal   Maximum value of the input box number.
  * @returns Nothing.
  */
-function hourMinusOne(hourId) {
-	if (isNaN(document.getElementById(hourId).value))
-		document.getElementById(hourId).value = '00';
-	else if (document.getElementById(hourId).value == 0)
-		document.getElementById(hourId).value = '23'; 
+function subOne(numInputBox, maxVal) {
+	if (isNaN(document.getElementById(numInputBox).value))
+		document.getElementById(numInputBox).value = '0';
+	else if (document.getElementById(numInputBox).value == 0)
+		document.getElementById(numInputBox).value = maxVal; 
 	else 
-		document.getElementById(hourId).value--;
-	if (document.getElementById(hourId).value.length == 1)
-		document.getElementById(hourId).value = '0' + document.getElementById(hourId).value;
+		document.getElementById(numInputBox).value--;
+	if (document.getElementById(numInputBox).value.length == 1)
+		document.getElementById(numInputBox).value = '0' + document.getElementById(numInputBox).value;
 }
 
 /**
- * Adds one minute to the minute input box.
- * @param[in] minuteId Id of the minute input box to be modified.
+ * If the object passed as a parameter has the class 'active', the class attributed is cleared.
+ * If the object has not got any class, the class 'active' is set.
+ * This is used to activate and deactivate the days of the week.
+ * @param[in] controlId Id of the <li> tag that will be activated or deactivated.
  * @returns Nothing.
  */
-function minutePlusOne(minuteId) {
-	if (isNaN(document.getElementById(minuteId).value))
-		document.getElementById(minuteId).value = '00';
-	else if (document.getElementById(minuteId).value == 59)
-		document.getElementById(minuteId).value = '00'; 
-	else 
-		document.getElementById(minuteId).value++;
-	if (document.getElementById(minuteId).value.length == 1)
-		document.getElementById(minuteId).value = '0' + document.getElementById(minuteId).value;
-}
-
-/**
- * Substracts one minute to the hour input box.
- * @param[in] minuteId Id of the minute input box to be modified.
- * @returns Nothing.
- */
-function minuteMinusOne(minuteId) {
-	if (isNaN(document.getElementById(minuteId).value))
-		document.getElementById(minuteId).value = '00';
-	else if (document.getElementById(minuteId).value == 0)
-		document.getElementById(minuteId).value = '59'; 
-	else 
-		document.getElementById(minuteId).value--;
-	if (document.getElementById(minuteId).value.length == 1)
-		document.getElementById(minuteId).value = '0' + document.getElementById(minuteId).value;
-}
-
-/**
- * Adds one to the snooze times, i.e. the number of times that the alarm will ring after the actual alarm time.
- * @param[in] snoozeTimes Id of the input box to be modified.
- * @returns Nothing.
- */
-function addOneTime(snoozeTimes) {
-	if (isNaN(document.getElementById(snoozeTimes).value))
-		document.getElementById(snoozeTimes).value = '00';
-	else if (document.getElementById(snoozeTimes).value == 5)
-		document.getElementById(minuteId).value = '5';
-	else 
-		document.getElementById(minuteId).value++;
-	if (document.getElementById(minuteId).value.length == 1)
-		document.getElementById(minuteId).value = '0' + document.getElementById(minuteId).value;
+function activateLink(controlId) {
+	if (document.getElementById(controlId).getAttribute('class'))
+		document.getElementById(controlId).setAttribute('class', '');
+	else
+		document.getElementById(controlId).setAttribute('class', 'active');
 }
 
 // Main code
