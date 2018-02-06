@@ -1,4 +1,6 @@
 phpAlarm
 ========
 
-Web application in PHP to setup alarms to wake me up, it uses a sqlite database to store the alarms and cron to play the audio files to wake me up.
+Web application in PHP to setup alarms to wake you up. It uses a sqlite database to store all the 
+alarms and the cron daemon to run them at the appropriate times. It is obvious that for this 
+application to work the computer running the webapp needs to have speakers.
